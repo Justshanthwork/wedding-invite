@@ -98,7 +98,7 @@ function RsvpInline() {
     return <p className="rsvp-thanks">With gratitude — your response is received.<br/>We can't wait to celebrate with you.</p>;
 
   return (
-    <form className="rsvp-inline" name={RSVP_FORM_NAME} method="POST" data-netlify="true" onSubmit={submit}>
+    <form className="rsvp-inline" name={RSVP_FORM_NAME} method="POST" onSubmit={submit}>
       <input type="hidden" name="form-name" value={RSVP_FORM_NAME} />
       <input className="rf" type="text" name="guest_name" placeholder="Your name and who is joining you" required
         value={name} onChange={(e) => setName(e.target.value)} />
@@ -290,7 +290,6 @@ export default function EditorialInvite() {
         .nm-script { font-family: 'Pinyon Script', cursive; font-size: clamp(54px, 14vw, 100px); color: var(--maroon); line-height: .92; }
         .nm-parent { font-style: italic; font-size: clamp(12.5px,3.3vw,15px); color: var(--muted); margin-top: 2px; letter-spacing: .01em; }
         .nm-weds { font-family: 'Cinzel', serif; font-size: clamp(12px,2.8vw,14px); letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); margin: 16px 0; }
-        .fam-closing { font-family: 'Cinzel', serif; font-size: clamp(10px,2.6vw,13px); letter-spacing: .28em; text-transform: uppercase; color: var(--gold-text); margin-top: 20px; opacity: .72; }
 
         /* PORTRAIT — full bleed */
         .slide-portrait { padding: 0; }
@@ -430,7 +429,6 @@ export default function EditorialInvite() {
                 <div className="nm-script">Lisha</div>
                 <p className="nm-parent">D/o Smt. Indrabai &amp; Lt. Shri Bherulalji Girya</p>
               </div>
-              <p className="fam-closing">12 July · 2026 · Bengaluru</p>
             </section>
 
             {/* COUPLE PORTRAIT */}
