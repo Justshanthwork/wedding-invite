@@ -15,7 +15,7 @@ import weddingThemeAudio from "./assets/wedding-theme.mp3";
 
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Ganeshbagh+Jain+Sthanak+Infantry+Road+Shivajinagar+Bengaluru";
-const RSVP_FORM_NAME = "wedding-rsvp";
+const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
 const IS_LOCAL_PREVIEW =
   typeof window !== "undefined" && window.location.protocol === "file:";
 const MUSIC_START = 10;
@@ -39,10 +39,6 @@ const CEREMONIES = [
 ];
 
 /* ---------- Inline RSVP ---------- */
-function encodeFormData(fields) {
-  return new URLSearchParams(fields).toString();
-}
-
 function RsvpInline() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -51,46 +47,28 @@ function RsvpInline() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("idle");
 
+  const reset = () => { setName(""); setPhone(""); setAttending("yes"); setCount(1); setMessage(""); };
+
   const submit = async (event) => {
     event.preventDefault();
     if (!name.trim() || !phone.trim()) return;
     setStatus("saving");
-
-    const fields = {
-      "form-name": RSVP_FORM_NAME,
-      guest_name: name.trim(),
-      mobile_number: phone.trim(),
-      attending,
-      guest_count: attending === "yes" ? String(count) : "0",
-      message: message.trim(),
-    };
-
     try {
-      if (IS_LOCAL_PREVIEW) {
-        setStatus("done");
-        setName("");
-        setPhone("");
-        setAttending("yes");
-        setCount(1);
-        setMessage("");
-        return;
-      }
-
-      const response = await fetch("/", {
+      if (IS_LOCAL_PREVIEW) { setStatus("done"); reset(); return; }
+      const response = await fetch(FORMSPREE_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encodeFormData(fields),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          guest_name: name.trim(),
+          mobile_number: phone.trim(),
+          attending,
+          guest_count: attending === "yes" ? String(count) : "0",
+          message: message.trim(),
+        }),
       });
-      if (!response.ok) {
-        console.error("RSVP submit failed:", response.status, response.statusText);
-        throw new Error("fail");
-      }
+      if (!response.ok) throw new Error("fail");
       setStatus("done");
-      setName("");
-      setPhone("");
-      setAttending("yes");
-      setCount(1);
-      setMessage("");
+      reset();
     } catch { setStatus("error"); }
   };
 
@@ -98,8 +76,7 @@ function RsvpInline() {
     return <p className="rsvp-thanks">With gratitude — your response is received.<br/>We can't wait to celebrate with you.</p>;
 
   return (
-    <form className="rsvp-inline" name={RSVP_FORM_NAME} method="POST" onSubmit={submit}>
-      <input type="hidden" name="form-name" value={RSVP_FORM_NAME} />
+    <form className="rsvp-inline" onSubmit={submit}>
       <input className="rf" type="text" name="guest_name" placeholder="Your name and who is joining you" required
         value={name} onChange={(e) => setName(e.target.value)} />
       <input className="rf" type="tel" name="mobile_number" placeholder="Mobile number" required
