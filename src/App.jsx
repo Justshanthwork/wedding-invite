@@ -81,7 +81,10 @@ function RsvpInline() {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encodeFormData(fields),
       });
-      if (!response.ok) throw new Error("fail");
+      if (!response.ok) {
+        console.error("RSVP submit failed:", response.status, response.statusText);
+        throw new Error("fail");
+      }
       setStatus("done");
       setName("");
       setPhone("");
@@ -267,6 +270,8 @@ export default function EditorialInvite() {
         .slide.active.anim-rise > *:nth-child(3) { animation-delay: .45s; }
         .slide.active.anim-rise > *:nth-child(4) { animation-delay: .65s; }
         .slide.active.anim-rise > *:nth-child(5) { animation-delay: .85s; }
+        .slide.active.anim-rise > *:nth-child(6) { animation-delay: 1.05s; }
+        .slide.active.anim-rise > *:nth-child(7) { animation-delay: 1.2s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 
@@ -285,6 +290,7 @@ export default function EditorialInvite() {
         .nm-script { font-family: 'Pinyon Script', cursive; font-size: clamp(54px, 14vw, 100px); color: var(--maroon); line-height: .92; }
         .nm-parent { font-style: italic; font-size: clamp(12.5px,3.3vw,15px); color: var(--muted); margin-top: 2px; letter-spacing: .01em; }
         .nm-weds { font-family: 'Cinzel', serif; font-size: clamp(12px,2.8vw,14px); letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); margin: 16px 0; }
+        .fam-closing { font-family: 'Cinzel', serif; font-size: clamp(10px,2.6vw,13px); letter-spacing: .28em; text-transform: uppercase; color: var(--gold-text); margin-top: 20px; opacity: .72; }
 
         /* PORTRAIT — full bleed */
         .slide-portrait { padding: 0; }
@@ -304,7 +310,7 @@ export default function EditorialInvite() {
         .dt-big { margin: 4px 0; }
         .dt-day { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(96px,30vw,200px); color: var(--maroon); line-height: .82; }
         .dt-my { font-family: 'Cinzel', serif; font-size: clamp(17px,4.6vw,26px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); }
-        .dt-time { font-style: italic; font-size: clamp(14px,3.6vw,17px); color: var(--muted); margin-top: 14px; }
+        .dt-sub { font-style: italic; font-size: clamp(14px,3.6vw,16px); color: var(--muted); margin-top: 22px; max-width: 280px; line-height: 1.65; }
 
         /* ORDER OF THE DAY */
         .slide-order { justify-content: flex-start; padding-top: 54px; }
@@ -424,6 +430,7 @@ export default function EditorialInvite() {
                 <div className="nm-script">Lisha</div>
                 <p className="nm-parent">D/o Smt. Indrabai &amp; Lt. Shri Bherulalji Girya</p>
               </div>
+              <p className="fam-closing">12 July · 2026 · Bengaluru</p>
             </section>
 
             {/* COUPLE PORTRAIT */}
@@ -446,8 +453,8 @@ export default function EditorialInvite() {
                 <p className="dt-dow">Sunday</p>
                 <div className="dt-big"><span className="dt-day">12</span></div>
                 <p className="dt-my">July · 2026</p>
-                <p className="dt-time">The morning celebrations begin at eight</p>
               </div>
+              <p className="dt-sub">Join us as we begin a day of love, tradition and celebration</p>
             </section>
 
             {/* ORDER OF THE DAY */}
@@ -500,18 +507,13 @@ export default function EditorialInvite() {
                 <svg width="15" height="15" viewBox="0 0 16 16"><path d="M3,8 a5,5 0 1 1 1.5,3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><path d="M3,5 L3,8 L6,8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
             ) : (
-              <button className="ctrl" onClick={togglePause} aria-label={paused ? "Play" : "Pause"}>
+              <button className={`ctrl ctrl-music ${musicPlaying ? "is-on" : ""}`} onClick={() => { togglePause(); void toggleMusic(); }} aria-label={paused ? "Play" : "Pause"}>
                 {paused
                   ? <svg width="15" height="15" viewBox="0 0 16 16"><path d="M5,3 L12,8 L5,13 Z" fill="currentColor"/></svg>
                   : <svg width="15" height="15" viewBox="0 0 16 16"><rect x="4.5" y="3.5" width="2.5" height="9" fill="currentColor"/><rect x="9" y="3.5" width="2.5" height="9" fill="currentColor"/></svg>}
+                <span className="ctrl-label">Music</span>
               </button>
             )}
-            <button className={`ctrl ctrl-music ${musicPlaying ? "is-on" : ""}`} onClick={toggleMusic} aria-label={musicPlaying ? "Pause music" : "Play music"}>
-              {musicPlaying
-                ? <svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 6.5h3L10 3v10L6 9.5H3z" fill="currentColor"/><path d="M11.25 6c.7.45 1.15 1.15 1.15 2s-.45 1.55-1.15 2" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>
-                : <svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 6.5h3L10 3v10L6 9.5H3z" fill="currentColor"/><path d="M11.4 4.6 4.6 11.4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>}
-              <span className="ctrl-label">Music</span>
-            </button>
             <button className="ctrl" onClick={() => go(1)} aria-label="Next">
               <svg width="15" height="15" viewBox="0 0 16 16"><path d="M6,3 L11,8 L6,13" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
