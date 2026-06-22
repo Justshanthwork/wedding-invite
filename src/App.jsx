@@ -15,7 +15,7 @@ import weddingThemeAudio from "./assets/wedding-theme.mp3";
 
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Ganeshbagh+Jain+Sthanak+Infantry+Road+Shivajinagar+Bengaluru";
-const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_URL = "https://formspree.io/f/mojoqozk";
 const IS_LOCAL_PREVIEW =
   typeof window !== "undefined" && window.location.protocol === "file:";
 const MUSIC_START = 10;
@@ -261,12 +261,14 @@ export default function EditorialInvite() {
         .slide-family { gap: 0; }
         .fam-house { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(15px, 4vw, 22px);
           letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); }
-        .fam-invite { font-style: italic; font-size: clamp(14px,3.6vw,18px); letter-spacing: .02em;
-          color: var(--ink); margin: 14px 0 22px; line-height: 1.55; font-weight: 400; }
+        .fam-invite { font-family: 'Cinzel', serif; font-size: clamp(9px,2.4vw,11.5px); letter-spacing: .26em;
+          text-transform: uppercase; color: var(--gold-text); margin: 10px 0 14px; line-height: 1.8; }
         .nm-block { display: flex; flex-direction: column; align-items: center; }
         .nm-script { font-family: 'Pinyon Script', cursive; font-size: clamp(54px, 14vw, 100px); color: var(--maroon); line-height: .92; }
         .nm-parent { font-style: italic; font-size: clamp(12.5px,3.3vw,15px); color: var(--muted); margin-top: 2px; letter-spacing: .01em; }
-        .nm-weds { font-family: 'Cinzel', serif; font-size: clamp(12px,2.8vw,14px); letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); margin: 16px 0; }
+        .nm-weds { font-family: 'Pinyon Script', cursive; font-size: clamp(38px,10vw,58px); color: var(--gold); display: flex; align-items: center; gap: 14px; margin: 8px 0; }
+        .nm-weds::before, .nm-weds::after { content: ""; display: block; width: 36px; height: 1px; background: var(--gold); opacity: .5; }
+        .fam-bless { font-family: 'Cinzel', serif; font-size: clamp(9px,2.3vw,11px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); margin-top: 20px; max-width: 220px; line-height: 1.9; opacity: .8; }
 
         /* PORTRAIT — full bleed */
         .slide-portrait { padding: 0; }
@@ -280,13 +282,11 @@ export default function EditorialInvite() {
         .portrait-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,25,15,.10) 0%, transparent 32%, transparent 55%, rgba(40,20,15,.62) 100%); }
 
         /* SAVE THE DATE */
-        .dt-frame { display: flex; flex-direction: column; align-items: center; padding: 30px 40px;
-          border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
-        .dt-dow { font-family: 'Cinzel', serif; font-size: clamp(14px,3.6vw,18px); letter-spacing: .4em; text-transform: uppercase; color: var(--maroon); }
-        .dt-big { margin: 4px 0; }
-        .dt-day { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(96px,30vw,200px); color: var(--maroon); line-height: .82; }
-        .dt-my { font-family: 'Cinzel', serif; font-size: clamp(17px,4.6vw,26px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); }
-        .dt-sub { font-style: italic; font-size: clamp(14px,3.6vw,16px); color: var(--muted); margin-top: 22px; max-width: 280px; line-height: 1.65; }
+        .slide-date { background: linear-gradient(155deg, #FDF0EE 0%, #F7D8D2 45%, #EDCAC2 100%); }
+        .dt-heart { display: flex; align-items: center; gap: 10px; color: var(--maroon); font-size: 11px; margin: 6px 0; }
+        .dt-heart::before, .dt-heart::after { content: ""; display: block; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
+        .dt-morning { font-family: 'Pinyon Script', cursive; font-size: clamp(44px,12vw,72px); color: var(--maroon); line-height: 1.05; margin: 4px 0 8px; }
+        .dt-full { font-family: 'Cinzel', serif; font-weight: 600; font-size: clamp(28px,7.8vw,48px); letter-spacing: .1em; color: var(--gold-deep); margin: 4px 0; }
 
         /* ORDER OF THE DAY */
         .slide-order { justify-content: flex-start; padding-top: 54px; }
@@ -397,6 +397,7 @@ export default function EditorialInvite() {
             <section className={`slide slide-family anim-rise ${cur === "family" ? "active" : ""}`} style={{ backgroundImage: `url(${backgroundAImage})` }}>
               <p className="fam-house">DAGA family</p>
               <p className="fam-invite">cordially invites you to celebrate the wedding ceremony of</p>
+              <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
               <div className="nm-block">
                 <div className="nm-script">Prashanth</div>
                 <p className="nm-parent">S/o Smt. Madhubala &amp; Shri Norathmalji Daga</p>
@@ -406,6 +407,7 @@ export default function EditorialInvite() {
                 <div className="nm-script">Lisha</div>
                 <p className="nm-parent">D/o Smt. Indrabai &amp; Lt. Shri Bherulalji Girya</p>
               </div>
+              <p className="fam-bless">We look forward to your presence and blessings</p>
             </section>
 
             {/* COUPLE PORTRAIT */}
@@ -421,15 +423,13 @@ export default function EditorialInvite() {
             </section>
 
             {/* SAVE THE DATE */}
-            <section className={`slide slide-date anim-rise ${cur === "date" ? "active" : ""}`} style={{ backgroundImage: `url(${backgroundBImage})` }}>
-              <p className="eyebrow">Save the Date</p>
+            <section className={`slide slide-date anim-rise ${cur === "date" ? "active" : ""}`}>
               <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
-              <div className="dt-frame">
-                <p className="dt-dow">Sunday</p>
-                <div className="dt-big"><span className="dt-day">12</span></div>
-                <p className="dt-my">July · 2026</p>
-              </div>
-              <p className="dt-sub">Join us as we begin a day of love, tradition and celebration</p>
+              <p className="eyebrow">Save the Date</p>
+              <div className="dt-heart">♥</div>
+              <p className="dt-morning">Sunday Morning</p>
+              <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
+              <p className="dt-full">12 July 2026</p>
             </section>
 
             {/* ORDER OF THE DAY */}

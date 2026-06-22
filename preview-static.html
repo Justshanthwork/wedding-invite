@@ -73,11 +73,13 @@
 
       .slide-family { gap: 0; }
       .fam-house { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(15px, 4vw, 22px); letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); }
-      .fam-invite { font-style: italic; font-size: clamp(14px,3.6vw,18px); letter-spacing: .02em; color: var(--ink); margin: 14px 0 22px; line-height: 1.55; font-weight: 400; }
+      .fam-invite { font-family: 'Cinzel', serif; font-size: clamp(9px,2.4vw,11.5px); letter-spacing: .26em; text-transform: uppercase; color: var(--gold-text); margin: 10px 0 14px; line-height: 1.8; }
       .nm-block { display: flex; flex-direction: column; align-items: center; }
       .nm-script { font-family: 'Pinyon Script', cursive; font-size: clamp(54px, 14vw, 100px); color: var(--maroon); line-height: .92; }
       .nm-parent { font-style: italic; font-size: clamp(12.5px,3.3vw,15px); color: var(--muted); margin-top: 2px; letter-spacing: .01em; }
-      .nm-weds { font-family: 'Cinzel', serif; font-size: clamp(12px,2.8vw,14px); letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); margin: 16px 0; }
+      .nm-weds { font-family: 'Pinyon Script', cursive; font-size: clamp(38px,10vw,58px); color: var(--gold); display: flex; align-items: center; gap: 14px; margin: 8px 0; }
+      .nm-weds::before, .nm-weds::after { content: ""; display: block; width: 36px; height: 1px; background: var(--gold); opacity: .5; }
+      .fam-bless { font-family: 'Cinzel', serif; font-size: clamp(9px,2.3vw,11px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); margin-top: 20px; max-width: 220px; line-height: 1.9; opacity: .8; }
 
       .slide-portrait { padding: 0; }
       .portrait-img { position: absolute; inset: 0; }
@@ -89,12 +91,11 @@
       .portrait-cap .pc-s { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #EAD4A6; margin-top: 8px; }
       .portrait-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,25,15,.10) 0%, transparent 32%, transparent 55%, rgba(40,20,15,.62) 100%); }
 
-      .dt-frame { display: flex; flex-direction: column; align-items: center; padding: 30px 40px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
-      .dt-dow { font-family: 'Cinzel', serif; font-size: clamp(14px,3.6vw,18px); letter-spacing: .4em; text-transform: uppercase; color: var(--maroon); }
-      .dt-big { margin: 4px 0; }
-      .dt-day { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(96px,30vw,200px); color: var(--maroon); line-height: .82; }
-      .dt-my { font-family: 'Cinzel', serif; font-size: clamp(17px,4.6vw,26px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); }
-      .dt-sub { font-style: italic; font-size: clamp(14px,3.6vw,16px); color: var(--muted); margin-top: 22px; max-width: 280px; line-height: 1.65; }
+      .slide-date { background: linear-gradient(155deg, #FDF0EE 0%, #F7D8D2 45%, #EDCAC2 100%); }
+      .dt-heart { display: flex; align-items: center; gap: 10px; color: var(--maroon); font-size: 11px; margin: 6px 0; }
+      .dt-heart::before, .dt-heart::after { content: ""; display: block; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
+      .dt-morning { font-family: 'Pinyon Script', cursive; font-size: clamp(44px,12vw,72px); color: var(--maroon); line-height: 1.05; margin: 4px 0 8px; }
+      .dt-full { font-family: 'Cinzel', serif; font-weight: 600; font-size: clamp(28px,7.8vw,48px); letter-spacing: .1em; color: var(--gold-deep); margin: 4px 0; }
 
       .slide-order { justify-content: flex-start; padding-top: 54px; }
       .order-head { font-weight: 600; font-size: clamp(30px,7.5vw,48px); color: var(--maroon); }
@@ -184,7 +185,8 @@
         <div class="stage">
           <section class="slide slide-family anim-rise with-bg" data-slide="family" style="background-image: url('./src/assets/background-a.jpg');">
             <p class="fam-house">DAGA family</p>
-            <p class="fam-invite">cordially invites you to celebrate the wedding ceremony of </p>
+            <p class="fam-invite">cordially invites you to celebrate the wedding ceremony of</p>
+            <div class="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"></path></svg></div>
             <div class="nm-block">
               <div class="nm-script">Prashanth</div>
               <p class="nm-parent">S/o Smt. Madhubala &amp; Shri Norathmalji Daga</p>
@@ -194,6 +196,7 @@
               <div class="nm-script">Lisha</div>
               <p class="nm-parent">D/o Smt. Indrabai &amp; Lt. Shri Bherulalji Girya</p>
             </div>
+            <p class="fam-bless">We look forward to your presence and blessings</p>
           </section>
 
           <section class="slide slide-portrait" data-slide="portrait">
@@ -207,15 +210,13 @@
             </div>
           </section>
 
-          <section class="slide slide-date anim-rise with-bg" data-slide="date" style="background-image: url('./src/assets/background-b.jpg');">
-            <p class="eyebrow">Save the Date</p>
+          <section class="slide slide-date anim-rise" data-slide="date">
             <div class="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"></path></svg></div>
-            <div class="dt-frame">
-              <p class="dt-dow">Sunday</p>
-              <div class="dt-big"><span class="dt-day">12</span></div>
-              <p class="dt-my">July · 2026</p>
-            </div>
-            <p class="dt-sub">Join us as we begin a day of love, tradition and celebration</p>
+            <p class="eyebrow">Save the Date</p>
+            <div class="dt-heart">♥</div>
+            <p class="dt-morning">Sunday Morning</p>
+            <div class="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"></path></svg></div>
+            <p class="dt-full">12 July 2026</p>
           </section>
 
           <section class="slide slide-order with-bg" data-slide="order" style="background-image: url('./src/assets/background-c.jpg');">
