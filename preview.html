@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitation Preview</title>
+    <meta http-equiv="refresh" content="0; url=./preview-static.html" />
+    <style>
+      :root {
+        --cream: #f1e7d6;
+        --ink: #4a3b2a;
+        --gold: #8a6a2e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: Georgia, serif;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        padding: 32px;
+      }
+
+      .card {
+        max-width: 560px;
+        text-align: center;
+      }
+
+      a {
+        color: var(--gold);
+      }
+    </style>
+    <script>
+      window.location.replace("./preview-static.html");
+    </script>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Opening local preview…</h1>
+      <p>
+        If it does not open automatically,
+        <a href="./preview-static.html">open the working preview here</a>.
+      </p>
+    </main>
+  </body>
+</html>
