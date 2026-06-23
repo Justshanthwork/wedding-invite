@@ -304,7 +304,7 @@ export default function EditorialInvite() {
         .fvr-hero { text-align: center; margin-bottom: 22px; }
         .fvr-heading { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(19px,5.2vw,34px);
           letter-spacing: .32em; text-transform: uppercase; color: var(--maroon); line-height: 1.1; }
-        .fvr-script { font-family: 'Pinyon Script', cursive; font-size: clamp(54px,14vw,78px);
+        .fvr-script { font-family: 'Pinyon Script', cursive; font-size: clamp(44px,11.5vw,64px);
           color: var(--gold-deep); line-height: 1.0; margin-top: -2px; }
         .fvr-divider { display: flex; align-items: center; gap: 0; justify-content: center;
           margin: 0 auto 22px; width: 200px; }
