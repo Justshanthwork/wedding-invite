@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import inviteCoverImage from "./assets/invite-cover.jpg";
 import portraitImage from "./assets/portrait.jpg";
-import backgroundAImage from "./assets/background-a.jpg";
-import backgroundBImage from "./assets/background-b.jpg";
+import backgroundAImage from "./assets/background-a.png";
+import backgroundBImage from "./assets/background-b.png";
 import backgroundCImage from "./assets/background-c.jpg";
 import mandapImage from "./assets/mandap.jpg";
 import weddingThemeAudio from "./assets/wedding-theme.mp3";
@@ -259,7 +259,7 @@ export default function EditorialInvite() {
 
         /* FAMILY */
         .slide-family { gap: 0; }
-        .fam-house { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(15px, 4vw, 22px);
+        .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(15px, 4vw, 22px);
           letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); }
         .fam-invite { font-family: 'Cinzel', serif; font-size: clamp(9px,2.4vw,11.5px); letter-spacing: .26em;
           text-transform: uppercase; color: var(--gold-text); margin: 10px 0 14px; line-height: 1.8; }
@@ -282,10 +282,11 @@ export default function EditorialInvite() {
         .portrait-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,25,15,.10) 0%, transparent 32%, transparent 55%, rgba(40,20,15,.62) 100%); }
 
         /* SAVE THE DATE */
-        .slide-date { background: linear-gradient(155deg, #FDF0EE 0%, #F7D8D2 45%, #EDCAC2 100%); }
+        .slide-date { background-color: #F7D8D2; }
+        .slide-date::before { display: none; }
         .dt-heart { display: flex; align-items: center; gap: 10px; color: var(--maroon); font-size: 11px; margin: 6px 0; }
         .dt-heart::before, .dt-heart::after { content: ""; display: block; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
-        .dt-morning { font-family: 'Pinyon Script', cursive; font-size: clamp(44px,12vw,72px); color: var(--maroon); line-height: 1.05; margin: 4px 0 8px; }
+        .dt-morning { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(48px,13vw,78px); color: var(--maroon); line-height: 1.05; margin: 4px 0 8px; }
         .dt-full { font-family: 'Cinzel', serif; font-weight: 600; font-size: clamp(28px,7.8vw,48px); letter-spacing: .1em; color: var(--gold-deep); margin: 4px 0; }
 
         /* ORDER OF THE DAY */
@@ -423,7 +424,7 @@ export default function EditorialInvite() {
             </section>
 
             {/* SAVE THE DATE */}
-            <section className={`slide slide-date anim-rise ${cur === "date" ? "active" : ""}`}>
+            <section className={`slide slide-date anim-rise ${cur === "date" ? "active" : ""}`} style={{ backgroundImage: `url(${backgroundBImage})` }}>
               <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
               <p className="eyebrow">Save the Date</p>
               <div className="dt-heart">♥</div>
