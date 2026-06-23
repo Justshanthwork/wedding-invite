@@ -446,8 +446,8 @@ export default function EditorialInvite() {
                 <div className="portrait-veil" />
               </div>
               <div className="portrait-cap">
-                <div className="pc-t">Two hearts, one journey</div>
-                <div className="pc-s">A lifetime of memories in the making</div>
+                <div className="pc-t">A Beautiful Beginning</div>
+                <div className="pc-s">Of a lifetime of love, laughter, and togetherness.</div>
               </div>
             </section>
 
