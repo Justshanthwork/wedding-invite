@@ -261,16 +261,18 @@ export default function EditorialInvite() {
 
         /* FAMILY */
         .slide-family { gap: 0; }
-        .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: clamp(22px, 6vw, 34px);
-          letter-spacing: .32em; text-transform: uppercase; color: var(--gold-deep); }
+        .fam-topmark { color: var(--gold); opacity: .72; margin: 0 0 6px; display: flex; justify-content: center; }
+        .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(17px, 4.6vw, 24px);
+          letter-spacing: .38em; text-transform: uppercase; color: var(--gold-deep); }
         .fam-invite { font-family: 'Cinzel', serif; font-size: clamp(9px,2.4vw,11.5px); letter-spacing: .26em;
-          text-transform: uppercase; color: var(--gold-text); margin: 10px 0 14px; line-height: 1.8; }
+          text-transform: uppercase; color: var(--gold-text); margin: 8px 0 12px; line-height: 1.8; }
         .nm-block { display: flex; flex-direction: column; align-items: center; }
         .nm-script { font-family: 'Pinyon Script', cursive; font-size: clamp(54px, 14vw, 100px); color: var(--maroon); line-height: .92; }
         .nm-parent { font-style: italic; font-size: clamp(12.5px,3.3vw,15px); color: var(--muted); margin-top: 2px; letter-spacing: .01em; }
-        .nm-weds { font-family: 'Pinyon Script', cursive; font-size: clamp(38px,10vw,58px); color: var(--gold); display: flex; align-items: center; gap: 14px; margin: 8px 0; }
-        .nm-weds::before, .nm-weds::after { content: ""; display: block; width: 36px; height: 1px; background: var(--gold); opacity: .5; }
-        .fam-bless { font-family: 'Cinzel', serif; font-size: clamp(9px,2.3vw,11px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); margin-top: 20px; max-width: 220px; line-height: 1.9; opacity: .8; }
+        .nm-weds { font-family: 'Pinyon Script', cursive; font-size: clamp(38px,10vw,58px); color: var(--gold); display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+        .nm-leaf { width: 46px; height: 14px; color: var(--gold); opacity: .7; display: block; flex-shrink: 0; }
+        .nm-leaf-r { transform: scaleX(-1); }
+        .fam-bless { font-family: 'Cinzel', serif; font-size: clamp(9px,2.3vw,11px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); margin-top: 6px; max-width: 220px; line-height: 1.9; opacity: .8; }
 
         /* PORTRAIT — full bleed */
         .slide-portrait { padding: 0; }
@@ -288,7 +290,7 @@ export default function EditorialInvite() {
         .slide-date::before { display: none; }
         .dt-heart { display: flex; align-items: center; gap: 10px; color: var(--maroon); font-size: 11px; margin: 6px 0; }
         .dt-heart::before, .dt-heart::after { content: ""; display: block; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
-        .dt-morning { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(22px,5.5vw,32px); color: var(--gold-deep); line-height: 1.2; margin: 2px 0 6px; opacity: .85; }
+        .dt-morning { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(32px,8vw,48px); color: var(--maroon); line-height: 1.1; margin: 2px 0 6px; }
         .dt-full { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(46px,12vw,72px); letter-spacing: .08em; color: var(--maroon); margin: 4px 0; line-height: 1; }
 
         /* ORDER OF THE DAY */
@@ -398,6 +400,16 @@ export default function EditorialInvite() {
           <div className="stage">
             {/* FAMILY INVITATION */}
             <section className={`slide slide-family anim-rise ${cur === "family" ? "active" : ""}`} style={{ backgroundImage: `url(${backgroundAImage})` }}>
+              <div className="fam-topmark">
+                <svg viewBox="0 0 70 22" width="70" height="22" fill="none" stroke="currentColor" strokeLinecap="round">
+                  <path d="M35,3 C31,3 28,6 30,10 C32,13 35,12 35,9" strokeWidth="0.9"/>
+                  <path d="M35,3 C39,3 42,6 40,10 C38,13 35,12 35,9" strokeWidth="0.9"/>
+                  <path d="M30,10 C25,10 21,7 23,4 C25,2 28,4 27,8" strokeWidth="0.8"/>
+                  <path d="M40,10 C45,10 49,7 47,4 C45,2 42,4 43,8" strokeWidth="0.8"/>
+                  <path d="M21,6 C15,7 11,11 13,15 C15,18 19,16 18,12" strokeWidth="0.7"/>
+                  <path d="M49,6 C55,7 59,11 57,15 C55,18 51,16 52,12" strokeWidth="0.7"/>
+                </svg>
+              </div>
               <p className="fam-house">DAGA family</p>
               <p className="fam-invite">cordially invites you to celebrate the wedding ceremony of</p>
               <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
@@ -405,11 +417,20 @@ export default function EditorialInvite() {
                 <div className="nm-script">Prashanth</div>
                 <p className="nm-parent">S/o Smt. Madhubala &amp; Shri Norathmalji Daga</p>
               </div>
-              <div className="nm-weds">&</div>
+              <div className="nm-weds">
+                <svg className="nm-leaf" viewBox="0 0 56 16" fill="none" stroke="currentColor" strokeWidth="0.9" strokeLinecap="round">
+                  <path d="M2,12 C18,11 38,10 54,9"/><path d="M11,12 Q15,6 22,10"/><path d="M28,11 Q32,5 39,9"/><path d="M43,10 Q47,5 53,9"/>
+                </svg>
+                &amp;
+                <svg className="nm-leaf nm-leaf-r" viewBox="0 0 56 16" fill="none" stroke="currentColor" strokeWidth="0.9" strokeLinecap="round">
+                  <path d="M2,12 C18,11 38,10 54,9"/><path d="M11,12 Q15,6 22,10"/><path d="M28,11 Q32,5 39,9"/><path d="M43,10 Q47,5 53,9"/>
+                </svg>
+              </div>
               <div className="nm-block">
                 <div className="nm-script">Lisha</div>
                 <p className="nm-parent">D/o Smt. Indrabai &amp; Lt. Shri Bherulalji Girya</p>
               </div>
+              <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
               <p className="fam-bless">We look forward to your presence and blessings</p>
             </section>
 
@@ -433,6 +454,7 @@ export default function EditorialInvite() {
               <p className="dt-morning">Sunday Morning</p>
               <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
               <p className="dt-full">12 July 2026</p>
+              <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
             </section>
 
             {/* ORDER OF THE DAY */}
