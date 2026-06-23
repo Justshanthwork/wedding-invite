@@ -299,27 +299,29 @@ export default function EditorialInvite() {
         .btn-line:disabled { opacity: .5; cursor: default; }
 
         /* FOREVER */
-        .slide-forever { padding-top: 44px; }
-        .slide-forever::before { background: rgba(248,241,228,.58) !important; }
-        .fvr-top { margin-bottom: 0; }
-        .fvr-heading { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(17px,4.8vw,30px);
-          letter-spacing: .28em; text-transform: uppercase; color: var(--maroon); line-height: 1.2; margin-top: 4px; }
-        .fvr-script { font-family: 'Pinyon Script', cursive; font-size: clamp(42px,11vw,64px);
-          color: var(--gold-deep); line-height: 1.05; margin: 2px 0 6px; }
-        .fvr-rule { display: flex; align-items: center; gap: 10px; justify-content: center; margin: 4px 0; }
-        .fvr-rl { flex: 1; max-width: 56px; height: 1px; background: var(--gold); opacity: .7; }
-        .fvr-dia { color: var(--gold); font-size: 8px; }
-        .fvr-quote { font-style: italic; font-size: clamp(12.5px,3.3vw,15px); color: var(--muted);
-          line-height: 1.55; font-weight: 300; max-width: 255px; margin: 8px auto; }
-        .fvr-names { margin: 8px 0 4px; }
-        .fvr-nm { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(20px,5.5vw,34px);
-          letter-spacing: .14em; text-transform: uppercase; color: var(--maroon); line-height: 1.25; }
-        .fvr-weds { display: flex; align-items: center; gap: 8px; justify-content: center; margin: 2px 0; }
-        .fvr-weds-txt { font-family: 'Pinyon Script', cursive; font-size: clamp(21px,5.5vw,30px);
-          color: var(--gold-deep); line-height: 1; }
-        .fvr-date { font-family: 'Cinzel', serif; font-size: clamp(11px,3vw,15px);
-          letter-spacing: .12em; color: var(--maroon); margin-top: 6px; white-space: nowrap; }
-        .fvr-foot { color: var(--gold); font-size: 11px; margin-top: 8px; }
+        .slide-forever { justify-content: center; padding: 72px 36px 100px; }
+        .slide-forever::before { background: rgba(248,242,230,.62) !important; }
+        .fvr-hero { text-align: center; margin-bottom: 22px; }
+        .fvr-heading { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(19px,5.2vw,34px);
+          letter-spacing: .32em; text-transform: uppercase; color: var(--maroon); line-height: 1.1; }
+        .fvr-script { font-family: 'Pinyon Script', cursive; font-size: clamp(54px,14vw,78px);
+          color: var(--gold-deep); line-height: 1.0; margin-top: -2px; }
+        .fvr-divider { display: flex; align-items: center; gap: 0; justify-content: center;
+          margin: 0 auto 22px; width: 200px; }
+        .fvr-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent); }
+        .fvr-divider-icon { display: flex; align-items: center; gap: 5px; padding: 0 10px; }
+        .fvr-divider-icon svg { display: block; }
+        .fvr-quote { font-style: italic; font-size: clamp(13px,3.5vw,15.5px); color: var(--ink);
+          line-height: 1.65; font-weight: 400; max-width: 248px; margin: 0 auto 26px; }
+        .fvr-closer { text-align: center; }
+        .fvr-nm { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(13px,3.5vw,17px);
+          letter-spacing: .22em; text-transform: uppercase; color: var(--maroon); opacity: .75; line-height: 1.3; }
+        .fvr-weds { display: flex; align-items: center; gap: 7px; justify-content: center; margin: 1px 0; }
+        .fvr-rl { flex: 1; max-width: 36px; height: 1px; background: var(--gold); opacity: .6; }
+        .fvr-weds-txt { font-family: 'Pinyon Script', cursive; font-size: clamp(18px,4.8vw,24px);
+          color: var(--gold-deep); opacity: .8; line-height: 1; }
+        .fvr-date { font-family: 'Cinzel', serif; font-size: clamp(9px,2.4vw,12px);
+          letter-spacing: .18em; color: var(--maroon); opacity: .6; margin-top: 5px; white-space: nowrap; }
 
         /* DOUBLE-TAP HEART */
         .tap-heart { position: fixed; pointer-events: none; z-index: 9999;
@@ -474,24 +476,28 @@ export default function EditorialInvite() {
 
             {/* FOREVER */}
             <section className={`slide slide-forever anim-rise ${cur === "forever" ? "active" : ""}`} style={{ backgroundImage: `url(${backgroundDImage})` }}>
-              <div className="fvr-top">
-                <p className="eyebrow">With Love &amp; Blessings</p>
+              <div className="fvr-hero">
                 <h2 className="fvr-heading">The Beginning</h2>
+                <p className="fvr-script">of forever</p>
               </div>
-              <p className="fvr-script">of forever</p>
-              <div className="fvr-rule">
-                <span className="fvr-rl" /><span className="fvr-dia">◆</span><span className="fvr-rl" />
+              <div className="fvr-divider">
+                <span className="fvr-divider-line" />
+                <span className="fvr-divider-icon">
+                  <svg width="7" height="7" viewBox="0 0 8 8"><polygon points="4,0 8,4 4,8 0,4" fill="none" stroke="#B08D4C" strokeWidth="1"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="#B08D4C"/></svg>
+                  <svg width="7" height="7" viewBox="0 0 8 8"><polygon points="4,0 8,4 4,8 0,4" fill="none" stroke="#B08D4C" strokeWidth="1"/></svg>
+                </span>
+                <span className="fvr-divider-line" />
               </div>
               <p className="fvr-quote">Among blessings, laughter, and cherished traditions,<br />we look forward to celebrating this joyful day with you.</p>
-              <div className="fvr-names">
+              <div className="fvr-closer">
                 <p className="fvr-nm">Prashanth</p>
                 <div className="fvr-weds">
                   <span className="fvr-rl" /><span className="fvr-weds-txt">weds</span><span className="fvr-rl" />
                 </div>
                 <p className="fvr-nm">Lisha</p>
+                <p className="fvr-date">✦ 12 July 2026 ✦</p>
               </div>
-              <p className="fvr-date">✦ <span className="dt-num">12</span> July <span className="dt-num">2026</span> ✦</p>
-              <div className="fvr-foot">◆</div>
             </section>
           </div>
 
