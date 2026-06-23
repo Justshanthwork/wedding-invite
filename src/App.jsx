@@ -22,7 +22,7 @@ const MUSIC_START = 10;
 const MUSIC_END = 70;
 
 const SLIDES = [
-  { id: "family",     dur: 4500 },
+  { id: "family",     dur: 6000 },
   { id: "portrait",   dur: 3500 },
   { id: "date",       dur: 3000 },
   { id: "order",      dur: 9000 },
@@ -127,7 +127,9 @@ export default function EditorialInvite() {
     if (!started || ended || paused) return;
     schedule(slide, SLIDES[slide].dur);
     return clear;
-  }, [started, slide, paused, ended, schedule]);
+    // paused intentionally omitted — togglePause handles resume scheduling directly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [started, slide, ended, schedule]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -259,8 +261,8 @@ export default function EditorialInvite() {
 
         /* FAMILY */
         .slide-family { gap: 0; }
-        .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(15px, 4vw, 22px);
-          letter-spacing: .34em; text-transform: uppercase; color: var(--gold-text); }
+        .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: clamp(22px, 6vw, 34px);
+          letter-spacing: .32em; text-transform: uppercase; color: var(--gold-deep); }
         .fam-invite { font-family: 'Cinzel', serif; font-size: clamp(9px,2.4vw,11.5px); letter-spacing: .26em;
           text-transform: uppercase; color: var(--gold-text); margin: 10px 0 14px; line-height: 1.8; }
         .nm-block { display: flex; flex-direction: column; align-items: center; }
@@ -286,8 +288,8 @@ export default function EditorialInvite() {
         .slide-date::before { display: none; }
         .dt-heart { display: flex; align-items: center; gap: 10px; color: var(--maroon); font-size: 11px; margin: 6px 0; }
         .dt-heart::before, .dt-heart::after { content: ""; display: block; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
-        .dt-morning { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(48px,13vw,78px); color: var(--maroon); line-height: 1.05; margin: 4px 0 8px; }
-        .dt-full { font-family: 'Cinzel', serif; font-weight: 600; font-size: clamp(28px,7.8vw,48px); letter-spacing: .1em; color: var(--gold-deep); margin: 4px 0; }
+        .dt-morning { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(22px,5.5vw,32px); color: var(--gold-deep); line-height: 1.2; margin: 2px 0 6px; opacity: .85; }
+        .dt-full { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(46px,12vw,72px); letter-spacing: .08em; color: var(--maroon); margin: 4px 0; line-height: 1; }
 
         /* ORDER OF THE DAY */
         .slide-order { justify-content: flex-start; padding-top: 54px; }
