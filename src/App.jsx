@@ -251,6 +251,8 @@ export default function EditorialInvite() {
         .slide.active.anim-rise > *:nth-child(5) { animation-delay: .85s; }
         .slide.active.anim-rise > *:nth-child(6) { animation-delay: 1.05s; }
         .slide.active.anim-rise > *:nth-child(7) { animation-delay: 1.2s; }
+        .slide.active.anim-rise > *:nth-child(8) { animation-delay: 1.32s; }
+        .slide.active.anim-rise > *:nth-child(9) { animation-delay: 1.44s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 
@@ -260,7 +262,7 @@ export default function EditorialInvite() {
         .ornament svg { width: 14px; height: 14px; }
 
         /* FAMILY */
-        .slide-family { gap: 0; }
+        .slide-family { gap: 0; background-size: 115% !important; background-position: center center !important; }
         .fam-topmark { color: var(--gold); opacity: .72; margin: 0 0 6px; display: flex; justify-content: center; }
         .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(17px, 4.6vw, 24px);
           letter-spacing: .38em; text-transform: uppercase; color: var(--gold-deep); }
@@ -286,12 +288,12 @@ export default function EditorialInvite() {
         .portrait-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,25,15,.10) 0%, transparent 32%, transparent 55%, rgba(40,20,15,.62) 100%); }
 
         /* SAVE THE DATE */
-        .slide-date { background-color: #F7D8D2; }
+        .slide-date { background-color: #F7D8D2; background-size: 115% !important; background-position: center center !important; }
         .slide-date::before { display: none; }
         .dt-heart { display: flex; align-items: center; gap: 10px; color: var(--maroon); font-size: 11px; margin: 6px 0; }
         .dt-heart::before, .dt-heart::after { content: ""; display: block; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
         .dt-morning { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(32px,8vw,48px); color: var(--maroon); line-height: 1.1; margin: 2px 0 6px; }
-        .dt-full { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(46px,12vw,72px); letter-spacing: .08em; color: var(--maroon); margin: 4px 0; line-height: 1; }
+        .dt-full { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(32px,9vw,60px); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; color: var(--maroon); margin: 4px 0; line-height: 1; }
 
         /* ORDER OF THE DAY */
         .slide-order { justify-content: flex-start; padding-top: 54px; }
