@@ -211,7 +211,7 @@ export default function EditorialInvite() {
     <div className="ed">
       <audio ref={audioRef} src={weddingThemeAudio} preload="metadata" />
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Pinyon+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Pinyon+Script&display=swap');
         :root {
           --cream: #F1E7D6; --mandap-bg: #F6EDDF; --ink: #4A3B2A; --maroon: #7A2E2E;
           --gold: #B08D4C; --gold-deep: #8A6A2E; --gold-text: #684819; --muted: #6E5634;
@@ -264,8 +264,8 @@ export default function EditorialInvite() {
         /* FAMILY */
         .slide-family { gap: 0; background-size: 115% !important; background-position: center center !important; }
         .fam-topmark { color: var(--gold); opacity: .72; margin: 0 0 6px; display: flex; justify-content: center; }
-        .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(17px, 4.6vw, 24px);
-          letter-spacing: .38em; text-transform: uppercase; color: var(--gold-deep); }
+        .fam-house { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: clamp(19px, 5.2vw, 27px);
+          letter-spacing: .34em; text-transform: uppercase; color: var(--gold-deep); }
         .fam-invite { font-family: 'Cinzel', serif; font-size: clamp(9px,2.4vw,11.5px); letter-spacing: .26em;
           text-transform: uppercase; color: var(--gold-text); margin: 8px 0 12px; line-height: 1.8; }
         .nm-block { display: flex; flex-direction: column; align-items: center; }
@@ -279,9 +279,9 @@ export default function EditorialInvite() {
         /* PORTRAIT — full bleed */
         .slide-portrait { padding: 0; }
         .portrait-img { position: absolute; inset: 0; }
-        .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-        .slide-portrait.active .portrait-img img { animation: ken 7.5s ease-out both; }
-        @keyframes ken { from { transform: scale(1.12); } to { transform: scale(1.0); } }
+        .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transform: scale(1.1); }
+        .slide-portrait.active .portrait-img img { animation: ken 8s ease-out both; }
+        @keyframes ken { from { transform: scale(1.1); } to { transform: scale(1.28); } }
         .portrait-cap { position: absolute; left: 0; right: 0; bottom: 11%; z-index: 2; }
         .portrait-cap .pc-t { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: italic; font-size: clamp(28px,6.8vw,42px); color: #FBF3E6; text-shadow: 0 2px 16px rgba(60,30,20,.6); }
         .portrait-cap .pc-s { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #EAD4A6; margin-top: 8px; }
