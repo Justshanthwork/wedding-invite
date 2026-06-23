@@ -31,11 +31,11 @@ const SLIDES = [
 ];
 
 const CEREMONIES = [
-  { t: "8:00 AM",  name: "Subah ka Nashta", sub: "Morning Breakfast", desc: "Breakfast, conversations, and the ceremonial draping of safas before the celebrations begin." },
+  { t: "8:00 AM",  name: "Alpahaar", sub: "Morning Breakfast", desc: "Breakfast followed by the traditional safa draping ceremony as family and friends gather before the celebrations begin." },
   { t: "9:00 AM",  name: "Baraat Prasthan", sub: "The Baraat", desc: "Join the baraat as we make our way to the venue with music, dancing, and celebration." },
   { t: "10:30 AM", name: "Varmala", sub: "The Exchange of Garlands", desc: "Amid showers of petals and cheers, Prashanth and Lisha choose each other before all." },
   { t: "11:00 AM", name: "Paanigrahan · Saat Phere", sub: "Seven Vows Around the Fire", desc: "The sacred pheras — seven promises, one lifetime, witnessed by Agni and everyone they love." },
-  { t: "12:00 PM", name: "The Grand Bhoj", sub: "A Feast to Remember", desc: "Blessings, embraces, and a celebratory lunch worthy of the occasion." },
+  { t: "12:00 PM", name: "Pratibhoj", sub: "A Feast to Remember", desc: "Blessings, embraces, and a celebratory lunch shared with family and friends." },
 ];
 
 /* ---------- Inline RSVP ---------- */
