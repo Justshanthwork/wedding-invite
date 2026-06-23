@@ -4,20 +4,18 @@ import portraitImage from "./assets/portrait.jpg";
 import backgroundAImage from "./assets/background-a.jpg";
 import backgroundBImage from "./assets/background-b.jpg";
 import backgroundCImage from "./assets/background-c.jpg";
+import backgroundDImage from "./assets/background-d.jpg";
 import mandapImage from "./assets/mandap.jpg";
 import weddingThemeAudio from "./assets/wedding-theme.mp3";
 
 /* ═══════════════════════════════════════════════════════════
    PRASHANTH & LISHA — Editorial Invitation
    Sabyasachi aesthetic · Cormorant Garamond · large negative space
-   Flow: Seal → Family → Portrait → Save the Date → Order of the Day → Venue → RSVP
+   Flow: Seal → Family → Portrait → Save the Date → Order of the Day → Venue → Forever
    ═══════════════════════════════════════════════════════════ */
 
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Ganeshbagh+Jain+Sthanak+Infantry+Road+Shivajinagar+Bengaluru";
-const FORMSPREE_URL = "https://formspree.io/f/mojoqozk";
-const IS_LOCAL_PREVIEW =
-  typeof window !== "undefined" && window.location.protocol === "file:";
 const MUSIC_START = 10;
 const MUSIC_END = 70;
 
@@ -27,7 +25,7 @@ const SLIDES = [
   { id: "date",       dur: 3500 },
   { id: "order",      dur: 9000 },
   { id: "venue",      dur: 3500 },
-  { id: "rsvp",       dur: 8000 },
+  { id: "forever",    dur: 8000 },
 ];
 
 const CEREMONIES = [
@@ -38,70 +36,6 @@ const CEREMONIES = [
   { t: "12:00 PM", name: "Pratibhoj", sub: "A Feast to Remember", desc: "Blessings, embraces, and a celebratory lunch shared with family and friends." },
 ];
 
-/* ---------- Inline RSVP ---------- */
-function RsvpInline() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [attending, setAttending] = useState("yes");
-  const [count, setCount] = useState(1);
-  const [message, setMessage] = useState("");
-  const [status, setStatus] = useState("idle");
-
-  const reset = () => { setName(""); setPhone(""); setAttending("yes"); setCount(1); setMessage(""); };
-
-  const submit = async (event) => {
-    event.preventDefault();
-    if (!name.trim() || !phone.trim()) return;
-    setStatus("saving");
-    try {
-      if (IS_LOCAL_PREVIEW) { setStatus("done"); reset(); return; }
-      const response = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          guest_name: name.trim(),
-          mobile_number: phone.trim(),
-          attending,
-          guest_count: attending === "yes" ? String(count) : "0",
-          message: message.trim(),
-        }),
-      });
-      if (!response.ok) throw new Error("fail");
-      setStatus("done");
-      reset();
-    } catch { setStatus("error"); }
-  };
-
-  if (status === "done")
-    return <p className="rsvp-thanks">With gratitude — your response is received.<br/>We can't wait to celebrate with you.</p>;
-
-  return (
-    <form className="rsvp-inline" onSubmit={submit}>
-      <input className="rf" type="text" name="guest_name" placeholder="Your name and who is joining you" required
-        value={name} onChange={(e) => setName(e.target.value)} />
-      <input className="rf" type="tel" name="mobile_number" placeholder="Mobile number" required
-        inputMode="tel" autoComplete="tel" pattern="[0-9+() -]{10,18}" title="Enter a valid mobile number"
-        value={phone} onChange={(e) => setPhone(e.target.value)} />
-      <div className="rf-row">
-        <select className="rf" name="attending" value={attending} onChange={(e) => setAttending(e.target.value)}>
-          <option value="yes">Joyfully accepts</option>
-          <option value="no">Regretfully declines</option>
-        </select>
-        {attending === "yes" && (
-          <select className="rf rf-sm" name="guest_count" value={count} onChange={(e) => setCount(Number(e.target.value))}>
-            {[1,2,3,4,5,6].map((n) => <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>)}
-          </select>
-        )}
-      </div>
-      <input className="rf" type="text" name="message" placeholder="A blessing for the couple (optional)"
-        value={message} onChange={(e) => setMessage(e.target.value)} />
-      <button className="btn-line" type="submit" disabled={status === "saving" || !name.trim() || !phone.trim()}>
-        {status === "saving" ? "Sending…" : "Send RSVP"}
-      </button>
-      {status === "error" && <p className="rsvp-err">Couldn't save — please try again.</p>}
-    </form>
-  );
-}
 
 export default function EditorialInvite() {
   const [started, setStarted] = useState(false);
@@ -204,6 +138,31 @@ export default function EditorialInvite() {
   };
   const go = (d) => { clear(); setPaused(false); setEnded(false); setSlide((s) => Math.min(SLIDES.length - 1, Math.max(0, s + d))); };
   const replay = () => { clear(); setEnded(false); setPaused(false); setSlide(0); };
+
+  useEffect(() => {
+    let lastTap = 0, lastX = 0, lastY = 0;
+    const spawnHeart = (x, y) => {
+      [{ s: 44, dx: 0, dy: 0, d: 0 }, { s: 26, dx: -22, dy: 8, d: 55 }, { s: 22, dx: 20, dy: -4, d: 100 }, { s: 18, dx: -6, dy: -18, d: 150 }]
+        .forEach(({ s, dx, dy, d }) => {
+          const el = document.createElement("div");
+          el.className = "tap-heart";
+          el.style.cssText = `left:${x + dx}px;top:${y + dy}px;font-size:${s}px;animation-delay:${d}ms`;
+          el.textContent = "♥";
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 1200 + d);
+        });
+    };
+    const onTouch = (e) => {
+      const t = e.changedTouches?.[0]; if (!t) return;
+      const now = Date.now(), x = t.clientX, y = t.clientY;
+      if (now - lastTap < 320 && Math.abs(x - lastX) < 70 && Math.abs(y - lastY) < 70) {
+        spawnHeart(x, y); lastTap = 0;
+      } else { lastTap = now; }
+      lastX = x; lastY = y;
+    };
+    document.addEventListener("touchend", onTouch);
+    return () => document.removeEventListener("touchend", onTouch);
+  }, []);
 
   const cur = SLIDES[slide].id;
 
@@ -339,19 +298,39 @@ export default function EditorialInvite() {
         .btn-line:hover { background: var(--gold); color: #FBF3E6; }
         .btn-line:disabled { opacity: .5; cursor: default; }
 
-        /* RSVP */
-        .slide-rsvp { padding-top: 56px; }
-        .rsvp-head { font-weight: 600; font-size: clamp(30px,7.5vw,50px); color: var(--maroon); }
-        .rsvp-sub { font-style: italic; font-size: clamp(16px,4vw,20px); color: var(--muted); margin-top: 8px; }
-        .rsvp-inline { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 11px; margin: 24px auto 0; }
-        .rf { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--ink); background: #FBF6EC;
-          border: 1px solid #CBB68B; border-radius: 0; padding: 11px 13px; outline: none; transition: border .2s; width: 100%; }
-        .rf:focus { border-color: var(--maroon); }
-        .rf-row { display: flex; gap: 10px; }
-        .rf-sm { flex: 0 0 44%; }
-        .rsvp-thanks { font-style: italic; font-size: clamp(19px,4.8vw,26px); color: var(--maroon); line-height: 1.6; margin: 30px 0; }
-        .rsvp-err { color: #A1281B; font-size: 14px; }
-        .rsvp-hash { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); margin-top: 22px; }
+        /* FOREVER */
+        .slide-forever { padding-top: 44px; }
+        .slide-forever::before { background: rgba(248,241,228,.58) !important; }
+        .fvr-top { margin-bottom: 0; }
+        .fvr-heading { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(17px,4.8vw,30px);
+          letter-spacing: .28em; text-transform: uppercase; color: var(--maroon); line-height: 1.2; margin-top: 4px; }
+        .fvr-script { font-family: 'Pinyon Script', cursive; font-size: clamp(42px,11vw,64px);
+          color: var(--gold-deep); line-height: 1.05; margin: 2px 0 6px; }
+        .fvr-rule { display: flex; align-items: center; gap: 10px; justify-content: center; margin: 4px 0; }
+        .fvr-rl { flex: 1; max-width: 56px; height: 1px; background: var(--gold); opacity: .7; }
+        .fvr-dia { color: var(--gold); font-size: 8px; }
+        .fvr-quote { font-style: italic; font-size: clamp(12.5px,3.3vw,15px); color: var(--muted);
+          line-height: 1.55; font-weight: 300; max-width: 255px; margin: 8px auto; }
+        .fvr-names { margin: 8px 0 4px; }
+        .fvr-nm { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(20px,5.5vw,34px);
+          letter-spacing: .14em; text-transform: uppercase; color: var(--maroon); line-height: 1.25; }
+        .fvr-weds { display: flex; align-items: center; gap: 8px; justify-content: center; margin: 2px 0; }
+        .fvr-weds-txt { font-family: 'Pinyon Script', cursive; font-size: clamp(21px,5.5vw,30px);
+          color: var(--gold-deep); line-height: 1; }
+        .fvr-date { font-family: 'Cinzel', serif; font-size: clamp(11px,3vw,15px);
+          letter-spacing: .12em; color: var(--maroon); margin-top: 6px; white-space: nowrap; }
+        .fvr-foot { color: var(--gold); font-size: 11px; margin-top: 8px; }
+
+        /* DOUBLE-TAP HEART */
+        .tap-heart { position: fixed; pointer-events: none; z-index: 9999;
+          transform: translate(-50%,-50%); color: #C0392B; line-height: 1;
+          animation: heartFloat 1.1s ease-out forwards; }
+        @keyframes heartFloat {
+          0%   { opacity: 0; transform: translate(-50%,-50%) scale(.4); }
+          25%  { opacity: 1; transform: translate(-50%,-65%) scale(1.2); }
+          75%  { opacity: .85; transform: translate(-50%,-130%) scale(.95); }
+          100% { opacity: 0; transform: translate(-50%,-175%) scale(.7); }
+        }
 
         /* ===== PROGRESS + CONTROLS ===== */
         .progress { position: absolute; top: 16px; left: 18px; right: 18px; z-index: 30; display: flex; gap: 6px; }
@@ -493,13 +472,26 @@ export default function EditorialInvite() {
               <div className="venue-mandap" style={{ backgroundImage: `url(${mandapImage})` }} aria-hidden="true" />
             </section>
 
-            {/* RSVP */}
-            <section className={`slide slide-rsvp anim-rise ${cur === "rsvp" ? "active" : ""}`} style={{ backgroundImage: `url(${backgroundAImage})` }}>
-              <p className="eyebrow">With Love</p>
-              <h2 className="rsvp-head">Kindly RSVP</h2>
-              <p className="rsvp-sub">We would be honoured to have you with us.</p>
-              <RsvpInline />
-              <p className="rsvp-hash">#PrashanthWedsLisha</p>
+            {/* FOREVER */}
+            <section className={`slide slide-forever anim-rise ${cur === "forever" ? "active" : ""}`} style={{ backgroundImage: `url(${backgroundDImage})` }}>
+              <div className="fvr-top">
+                <p className="eyebrow">With Love &amp; Blessings</p>
+                <h2 className="fvr-heading">The Beginning</h2>
+              </div>
+              <p className="fvr-script">of forever</p>
+              <div className="fvr-rule">
+                <span className="fvr-rl" /><span className="fvr-dia">◆</span><span className="fvr-rl" />
+              </div>
+              <p className="fvr-quote">Among blessings, laughter, and cherished traditions,<br />we look forward to celebrating this joyful day with you.</p>
+              <div className="fvr-names">
+                <p className="fvr-nm">Prashanth</p>
+                <div className="fvr-weds">
+                  <span className="fvr-rl" /><span className="fvr-weds-txt">weds</span><span className="fvr-rl" />
+                </div>
+                <p className="fvr-nm">Lisha</p>
+              </div>
+              <p className="fvr-date">✦ <span className="dt-num">12</span> July <span className="dt-num">2026</span> ✦</p>
+              <div className="fvr-foot">◆</div>
             </section>
           </div>
 
