@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import inviteCoverImage from "./assets/invite-cover.jpg";
 import portraitImage from "./assets/portrait.jpg";
-import backgroundAImage from "./assets/background-a.png";
-import backgroundBImage from "./assets/background-b.png";
+import backgroundAImage from "./assets/background-a.jpg";
+import backgroundBImage from "./assets/background-b.jpg";
 import backgroundCImage from "./assets/background-c.jpg";
 import mandapImage from "./assets/mandap.jpg";
 import weddingThemeAudio from "./assets/wedding-theme.mp3";
@@ -442,7 +442,7 @@ export default function EditorialInvite() {
             {/* COUPLE PORTRAIT */}
             <section className={`slide slide-portrait ${cur === "portrait" ? "active" : ""}`}>
               <div className="portrait-img">
-                <img src={portraitImage} alt="Prashanth and Lisha" />
+                <img src={portraitImage} alt="Prashanth and Lisha" loading="lazy" />
                 <div className="portrait-veil" />
               </div>
               <div className="portrait-cap">
