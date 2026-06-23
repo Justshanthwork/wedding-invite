@@ -22,9 +22,9 @@ const MUSIC_START = 10;
 const MUSIC_END = 70;
 
 const SLIDES = [
-  { id: "family",     dur: 6000 },
+  { id: "family",     dur: 6500 },
   { id: "portrait",   dur: 3500 },
-  { id: "date",       dur: 3000 },
+  { id: "date",       dur: 3500 },
   { id: "order",      dur: 9000 },
   { id: "venue",      dur: 3500 },
   { id: "rsvp",       dur: 8000 },
@@ -279,13 +279,13 @@ export default function EditorialInvite() {
         /* PORTRAIT — full bleed */
         .slide-portrait { padding: 0; }
         .portrait-img { position: absolute; inset: 0; }
-        .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transform: scale(1.1); }
+        .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; transform: scale(1.2); }
         .slide-portrait.active .portrait-img img { animation: ken 8s ease-out both; }
-        @keyframes ken { from { transform: scale(1.1); } to { transform: scale(1.28); } }
+        @keyframes ken { from { transform: scale(1.2); } to { transform: scale(1.38); } }
         .portrait-cap { position: absolute; left: 0; right: 0; bottom: 11%; z-index: 2; }
         .portrait-cap .pc-t { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: italic; font-size: clamp(28px,6.8vw,42px); color: #FBF3E6; text-shadow: 0 2px 16px rgba(60,30,20,.6); }
         .portrait-cap .pc-s { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #EAD4A6; margin-top: 8px; }
-        .portrait-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,25,15,.10) 0%, transparent 32%, transparent 55%, rgba(40,20,15,.62) 100%); }
+        .portrait-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,8,4,.75) 0%, rgba(18,8,4,.30) 28%, transparent 48%, transparent 56%, rgba(30,14,8,.68) 100%); }
 
         /* SAVE THE DATE */
         .slide-date { background-color: #F7D8D2; background-size: 115% !important; background-position: center center !important; }
@@ -294,6 +294,7 @@ export default function EditorialInvite() {
         .dt-heart::before, .dt-heart::after { content: ""; display: block; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
         .dt-morning { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(32px,8vw,48px); color: var(--maroon); line-height: 1.1; margin: 2px 0 6px; }
         .dt-full { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(32px,9vw,60px); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; color: var(--maroon); margin: 4px 0; line-height: 1; }
+        .dt-num { color: var(--gold-deep); }
 
         /* ORDER OF THE DAY */
         .slide-order { justify-content: flex-start; padding-top: 54px; }
@@ -455,7 +456,7 @@ export default function EditorialInvite() {
               <div className="dt-heart">♥</div>
               <p className="dt-morning">Sunday Morning</p>
               <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
-              <p className="dt-full">12 July 2026</p>
+              <p className="dt-full"><span className="dt-num">12</span> July <span className="dt-num">2026</span></p>
               <div className="ornament"><svg viewBox="0 0 14 14"><path d="M7,1 L8,6 L13,7 L8,8 L7,13 L6,8 L1,7 L6,6 Z" fill="currentColor"/></svg></div>
             </section>
 
