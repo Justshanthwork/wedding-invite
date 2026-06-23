@@ -297,13 +297,15 @@ export default function EditorialInvite() {
         .dt-num { color: var(--gold-deep); }
 
         /* ORDER OF THE DAY */
-        .slide-order { justify-content: flex-start; padding-top: 54px; }
-        .order-head { font-weight: 600; font-size: clamp(30px,7.5vw,48px); color: var(--maroon); }
-        .order-list { max-width: 560px; width: 100%; margin: 14px auto 0; display: flex; flex-direction: column; }
-        .ord-row { display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 12px 14px; margin-bottom: 8px;
-          border: 1px solid #CFBC9348; border-radius: 18px;
+        .slide-order { justify-content: flex-start; padding-top: 50px; }
+        .order-head { font-weight: 600; font-size: clamp(26px,6.5vw,42px); color: var(--maroon); }
+        .order-list { max-width: 560px; width: 100%; margin: 6px auto 0; display: flex; flex-direction: column;
+          overflow-y: auto; max-height: calc(100vh - 224px); scrollbar-width: none; }
+        .order-list::-webkit-scrollbar { display: none; }
+        .ord-row { display: flex; gap: 12px; align-items: flex-start; text-align: left; padding: 8px 12px; margin-bottom: 5px;
+          border: 1px solid #CFBC9348; border-radius: 14px;
           background: linear-gradient(90deg, rgba(246,237,223,.88) 0%, rgba(246,237,223,.72) 52%, rgba(246,237,223,.18) 100%);
-          box-shadow: 0 10px 24px rgba(122,46,46,.06); opacity: 0; }
+          box-shadow: 0 8px 18px rgba(122,46,46,.06); opacity: 0; }
         .ord-row:last-child { margin-bottom: 0; }
         .slide-order.active .ord-row { animation: riseIn .7s ease forwards; }
         .slide-order.active .ord-row:nth-child(1){animation-delay:.5s}
@@ -311,10 +313,10 @@ export default function EditorialInvite() {
         .slide-order.active .ord-row:nth-child(3){animation-delay:1.5s}
         .slide-order.active .ord-row:nth-child(4){animation-delay:2.0s}
         .slide-order.active .ord-row:nth-child(5){animation-delay:2.5s}
-        .ord-time { flex: 0 0 82px; font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; color: var(--gold-text); padding-top: 5px; }
-        .ord-name { font-weight: 600; font-size: 20px; color: var(--maroon); line-height: 1.15; }
-        .ord-sub { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-text); margin: 2px 0 3px; }
-        .ord-desc { font-style: italic; font-size: 14px; color: var(--muted); line-height: 1.45; font-weight: 300; }
+        .ord-time { flex: 0 0 72px; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; letter-spacing: .06em; color: var(--gold-text); padding-top: 4px; }
+        .ord-name { font-weight: 600; font-size: 17px; color: var(--maroon); line-height: 1.15; }
+        .ord-sub { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-text); margin: 1px 0 2px; }
+        .ord-desc { font-style: italic; font-size: 12.5px; color: var(--muted); line-height: 1.4; font-weight: 300; }
 
         /* VENUE */
         .slide-venue { padding: 0; justify-content: flex-start; background: linear-gradient(180deg, #F8F0E4 0%, #F3E6D6 52%, #E9D7BB 100%); overflow: hidden; }
