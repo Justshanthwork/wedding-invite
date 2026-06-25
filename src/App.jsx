@@ -3,7 +3,7 @@ import inviteCoverImage from "./assets/invite-cover.jpg";
 import portraitImage from "./assets/portrait.jpg";
 import backgroundAImage from "./assets/background-a.jpg";
 import backgroundBImage from "./assets/background-b.jpg";
-import backgroundCImage from "./assets/background-c.jpg";
+import backgroundCImage from "./assets/background-g.jpg";
 import backgroundDImage from "./assets/background-d.jpg";
 import mandapImage from "./assets/mandap.jpg";
 import weddingThemeAudio from "./assets/wedding-theme.mp3";
@@ -304,8 +304,8 @@ export default function EditorialInvite() {
         .fvr-hero { text-align: center; margin-bottom: 22px; }
         .fvr-heading { font-family: 'Cinzel', serif; font-weight: 700; font-size: clamp(19px,5.2vw,34px);
           letter-spacing: .32em; text-transform: uppercase; color: var(--maroon); line-height: 1.1; }
-        .fvr-script { font-family: 'Pinyon Script', cursive; font-size: clamp(44px,11.5vw,64px);
-          color: var(--gold-deep); line-height: 1.0; margin-top: -2px; }
+        .fvr-script { font-family: 'Pinyon Script', cursive; font-size: clamp(38px,10vw,54px);
+          color: var(--gold-deep); line-height: 1.0; margin-top: 6px; }
         .fvr-divider { display: flex; align-items: center; gap: 0; justify-content: center;
           margin: 0 auto 22px; width: 200px; }
         .fvr-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent); }
